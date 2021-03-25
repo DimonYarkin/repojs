@@ -65,7 +65,7 @@ textInner += `<p>  Проверяем работу функции<br>
 textInner += `<h3>4. Присвоить переменной а значение в промежутке [0..15].
 С помощью оператора switch организовать вывод чисел от a до 15.</h3>`
 
-function mySwitch(val) {
+function mySwitchRev(val) {
     let result =''
     switch (val) {
         case 15: result += '15,'
@@ -88,10 +88,35 @@ function mySwitch(val) {
     return result.split(',').reverse().join(' ')
 }
 
+function mySwitch(val) {
+    let result =''
+    switch (val) {
+        case 0: result += ' 0'
+        case 1: result += ' 1'
+        case 2: result += ' 2'
+        case 3: result += ' 3'
+        case 4: result += ' 4'
+        case 5: result += ' 5'
+        case 6: result += ' 6'
+        case 7: result += ' 7'
+        case 8: result += ' 8'
+        case 9: result += ' 9'
+        case 10: result += ' 10'
+        case 11: result += ' 11'
+        case 12: result += ' 12'
+        case 13: result += ' 13'
+        case 14: result += ' 14'
+        case 15: result += ' 15'
+    }
+    return result
+}
+
 let valNumber = Math.floor(Math.random()*15)
 
 textInner += `<p>Заданное число случайным образом = ${valNumber}<br>
-Результат = ${mySwitch(valNumber)}
+Результат от a до 15= ${mySwitch(valNumber)}<br>
+Результат от a до 0 = ${mySwitchRev(valNumber)}
+
 </p>`
 
 textInner += `<h3>5. Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. 
