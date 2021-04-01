@@ -4,18 +4,18 @@
 
 // Здесь я метки не использовал метки это зло))
 console.log('Решение задачи 1')
-let j=0
-while (j<=100){
-    if (j>1){
-        let n=2
+let j = 0
+while (j <= 100) {
+    if (j > 1) {
+        let n = 2
         let flag = true
-        while (n<=100) {
-        if (j%n === 0 && j != n) {
-            flag = false
-            break
+        while (n <= 100) {
+            if (j % n === 0 && j != n) {
+                flag = false
+                break
+            }
+            n++
         }
-        n++
-    }
         if (flag) console.log(j)
     }
     j++
@@ -28,10 +28,10 @@ a) Организовать такой массив для хранения то
 b) Организовать функцию countBasketPrice, которая будет считать стоимость корзины.*/
 console.log('Решение задачи 2')
 
-let product =[
-    ['Огурцы',10,300],
-    ['Помидоры',15,500],
-    ['Марковка',20,200]
+let product = [
+    ['Огурцы', 10, 300],
+    ['Помидоры', 15, 500],
+    ['Марковка', 20, 200]
 ]
 
 function countBasketPrice(product) {
@@ -44,13 +44,14 @@ function countBasketPrice(product) {
     }
     return sumprod
 }
+
 console.log(`Стоимость карзины = ${countBasketPrice(product)}`)
 
 /*3.*Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть это должно так:*/
 console.log('Решение задачи 3')
 
-for (let num=0;num<=9;console.log(num++)){}
-
+for (let num = 0; num <= 9; console.log(num++)) {
+}
 
 
 /*4. *Нарисовать пирамиду с помощью console.log, как показано на рисунке, только у вашей пирамиды должно быть 20 рядов, а не 5:*/
@@ -58,6 +59,6 @@ console.log('Решение задачи 4')
 
 let mysrt = 'x'
 
-for (let i=1;i<=20;i++){
+for (let i = 1; i <= 20; i++) {
     console.log(mysrt.repeat(i))
 }
