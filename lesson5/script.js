@@ -41,8 +41,13 @@ function getBascket() {
             }
             return sum;
         },
-        countGoods(){
-            return this.goods.count
+        countGoods() {
+            let countG = 0;
+            for (var key in this.goods) {
+                const elem = this.goods[key];
+                countG += elem.count;
+            }
+            return countG;
         }
     }
 }
@@ -62,10 +67,31 @@ const divBasket = document.querySelector('.basket')
 const tomatos = getGoods('Помидоры', 300, 2)
 const cucumbers = getGoods('Огурцы', 200, 1)
 const onion = getGoods('Лук', 30, 2)
-let HTMLtext =``
-if (basket.countGoods()===0) {
+basket.goods = {tomatos, cucumbers, onion}
+let HTMLtext = ``
+if (basket.countGoods() === 0) {
     HTMLtext = `<p>Корзина пуста</p>`
-
+} else {
+    HTMLtext = `<p>В корзине ${basket.countGoods()} товаров на сумму ${basket.sumBascket()}</p>`
 
 }
 divBasket.innerHTML = HTMLtext
+
+/*4*. Сделать так, чтобы товары в каталоге выводились при помощи JS:
+4.1. Создать массив товаров (сущность Product);
+4.2. При загрузке страницы на базе данного массива генерировать вывод из него.
+HTML-код должен содержать только div id=”catalog” без вложенного кода. Весь вид каталога генерируется JS.*/
+
+let produts = [tomatos, cucumbers, onion]
+
+HTMLtext = ``
+produts.forEach((good) => {
+    HTMLtext += `<div class="product">
+                       <div>Товар: ${good.name}</div>
+                       <div>Цена: ${good.price}</div>
+                       <div>Остаток: ${good.count}</div>
+                   </div>`
+})
+
+const divCatalog = document.querySelector('.catalog')
+divCatalog.innerHTML = HTMLtext
