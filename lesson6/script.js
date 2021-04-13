@@ -68,7 +68,7 @@ const basket = {
             HTMLText += cartItem.renderBascket(good)
 
         })
-        HTMLText += `<h2>Итого в товаров ${this.countGoods()} на сумму ${this.sumBascket()}</h2>`
+        HTMLText += `<h2>Итого товаров ${this.countGoods()} на сумму ${this.sumBascket()}</h2>`
         HTMLText += '<button class = "btn_bascket" > Оформить заказ</button>'
         bascketProduct.innerHTML = HTMLText
     },
