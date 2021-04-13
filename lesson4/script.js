@@ -30,13 +30,12 @@ console.log(myObg)
 
 function getBascket() {
     return {
-        goods: {},
+        goods: [],
         sumBascket() {
             let sum = 0;
-            for (var key in this.goods) {
-                const elem = this.goods[key];
-                sum += elem.count * elem.price;
-            }
+            this.goods.forEach((good) => {
+                sum += good.count * good.price;
+            })
             return sum;
         }
     }
@@ -55,5 +54,5 @@ const tomatos = getGoods('Помидоры', 300, 2)
 const cucumbers = getGoods('Огурцы', 200, 1)
 const onion = getGoods('Лук', 30, 2)
 
-basket.goods = {tomatos, cucumbers, onion}
+basket.goods = [tomatos, cucumbers, onion]
 console.log(`Стоимость карзины ${basket.sumBascket()}`);
