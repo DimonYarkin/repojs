@@ -32,21 +32,19 @@ creatDesk();
 
 function getBascket() {
     return {
-        goods: {},
+        goods: [],
         sumBascket() {
             let sum = 0;
-            for (var key in this.goods) {
-                const elem = this.goods[key];
-                sum += elem.count * elem.price;
-            }
+            this.goods.forEach((good) => {
+                sum += good.count * good.price;
+            })
             return sum;
         },
         countGoods() {
             let countG = 0;
-            for (var key in this.goods) {
-                const elem = this.goods[key];
-                countG += elem.count;
-            }
+            this.goods.forEach((good) => {
+                countG++;
+            })
             return countG;
         }
     }
@@ -67,7 +65,7 @@ const divBasket = document.querySelector('.basket')
 const tomatos = getGoods('Помидоры', 300, 2)
 const cucumbers = getGoods('Огурцы', 200, 1)
 const onion = getGoods('Лук', 30, 2)
-basket.goods = {tomatos, cucumbers, onion}
+basket.goods = [tomatos, cucumbers, onion]
 let HTMLtext = ``
 if (basket.countGoods() === 0) {
     HTMLtext = `<p>Корзина пуста</p>`
