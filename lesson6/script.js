@@ -28,7 +28,7 @@ const basket = {
     goods: [],
     cartItem,
     init() {
-        document.querySelector('.basket').addEventListener('click', evt => {
+        document.querySelector('.basket').addEventListener('click', event => {
             this.clickBascket(event)
         })
     },
@@ -86,7 +86,7 @@ const catalogProduct = {
     cartItem,
     basket,
     init() {
-        document.querySelector('.catalog').addEventListener('click', evt => {
+        document.querySelector('.catalog').addEventListener('click', event => {
             this.clickProdutct(event)
         })
     },
