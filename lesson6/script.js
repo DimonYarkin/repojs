@@ -5,8 +5,6 @@ const cartItem = {
                     <div class = "articul" ><b>Код товара: </b> ${good.articul}</div>
                     <div><b>Наименование</b>: ${good.name}</div>
                     <div><b>Цена за шт.</b>: ${good.price}</div>
-                    <div><b>Количество</b>: ${good.quantity}</div>
-                    <div><b>Стоимость</b>: ${good.quantity * good.price}</div>
                     <button class = 'btn_prod' > В корзину</button>
                 </div>`;
     },
@@ -26,8 +24,9 @@ const cartItem = {
 интерактивного ввода количества*/
 const basket = {
     goods: [],
-    cartItem,
-    init() {
+    cartItem: null,
+    init(cartItemClass) {
+        this.cartItem = cartItemClass
         document.querySelector('.basket').addEventListener('click', event => {
             this.clickBascket(event)
         })
@@ -59,8 +58,12 @@ const basket = {
     },
     addGoods(product) {
         let goodObj = this.goods.find(good => good.articul === product.articul)
-        if(typeof goodObj == "undefined") this.goods.push(Object.assign({}, product));
-    },
+        if(typeof goodObj == "undefined") {
+            this.goods.push(Object.assign({}, product));
+        } else {
+                goodObj.quantity ++
+        }
+        },
     renderItemToBascket() {
         let HTMLText = '<h2> Ваша корзина </h2>'
         const bascketProduct = document.querySelector('.basket');
@@ -83,9 +86,12 @@ const basket = {
 
 const catalogProduct = {
     goods: [],
-    cartItem,
-    basket,
-    init() {
+    cartItem: null,
+    basket: null,
+    init(cartItemClass,basketClass) {
+        this.cartItem = cartItemClass
+        this.basket = basketClass
+
         document.querySelector('.catalog').addEventListener('click', event => {
             this.clickProdutct(event)
         })
@@ -123,15 +129,15 @@ function getGoods(name, articul, price, quantity) {
         name: name,
         articul: articul,
         price: price,
-        quantity: quantity
+        quantity
 
     }
 }
 
 
-const tomatos = getGoods('Помидоры', '1', 300, 2)
-const cucumbers = getGoods('Огурцы', '2', 200, 1)
-const onion = getGoods('Лук', '3', 30, 2)
+const tomatos = getGoods('Помидоры', '1', 300,1)
+const cucumbers = getGoods('Огурцы', '2', 200,1)
+const onion = getGoods('Лук', '3', 30,1)
 
 
 catalogProduct.addProduct(tomatos)
@@ -139,5 +145,5 @@ catalogProduct.addProduct(cucumbers)
 catalogProduct.addProduct(onion)
 
 catalogProduct.renderCatalogItem()
-catalogProduct.init()
-basket.init()
+catalogProduct.init(cartItem,basket)
+basket.init(cartItem)
