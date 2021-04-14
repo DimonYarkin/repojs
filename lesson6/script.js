@@ -129,7 +129,7 @@ function getGoods(name, articul, price, quantity) {
         name: name,
         articul: articul,
         price: price,
-        quantity
+        quantity:quantity
 
     }
 }
